@@ -25,3 +25,43 @@ cd rust && cargo build --release && time ./target/release/rust < ../search.txt >
 real	3m35.732s
 user	3m34.699s
 sys	0m0.610s
+
+## 10k by 10k
+### make python
+```bash
+python generate_random_text.py 10000 > search.txt
+python generate_random_text.py 10000 > index.txt
+cd py && time poetry run python main.py < ../search.txt > /dev/null
+
+real	0m25.185s
+user	0m24.961s
+sys	0m0.155s
+```
+
+### make julia
+```bash
+cd julia && time julia --project=. main.jl < ../search.txt > /dev/null
+
+real	0m57.660s
+user	0m57.373s
+sys	0m0.183s
+```
+
+### make rust
+```bash
+cd rust && cargo build --release && time ./target/release/rust < ../search.txt > /dev/null
+    Finished release [optimized] target(s) in 0.02s
+
+real	0m43.100s
+user	0m42.734s
+sys	0m0.158s
+```
+
+### make duckdb
+```bash
+cd duckdb && time duckdb < main.sql > /dev/null
+
+real	3m37.596s
+user	7m21.367s
+sys	0m12.357s
+```
