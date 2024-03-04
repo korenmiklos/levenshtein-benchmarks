@@ -3,8 +3,8 @@ Take 10k random lines of text, each 20 characters long. Search for a random 10k 
 
 ### make python
 ```bash
-python generate_random_text.py 10000 > search.txt
-python generate_random_text.py 10000 > index.txt
+python generate_random_text.py 10000 42 > search.txt
+python generate_random_text.py 10000 24 > index.txt
 cd py && time poetry run python main.py < ../search.txt > /dev/null
 
 real	0m25.185s

@@ -10,8 +10,8 @@ def generate_random_text(n, length=20, seed=42):
         print(''.join(random.choice(chars) for _ in range(length)))
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python generate_random_text.py <number_of_lines>")
+    if len(sys.argv) != 3:
+        print("Usage: python generate_random_text.py <number_of_lines:int> <seed:int>")
         sys.exit(1)
 
     try:
@@ -20,4 +20,10 @@ if __name__ == "__main__":
         print("Please enter a valid integer for the number of lines.")
         sys.exit(1)
 
-    generate_random_text(n)
+    try:
+        seed = int(sys.argv[2])
+    except ValueError:
+        print("Please enter a valid integer for the seed.")
+        sys.exit(1)
+
+    generate_random_text(n, seed=seed)
