@@ -39,3 +39,9 @@ real	3m37.596s
 user	7m21.367s
 sys	0m12.357s
 ```
+
+### make R
+```bash
+cd R && time Rscript --vanilla main.R > /dev/null
+
+```
